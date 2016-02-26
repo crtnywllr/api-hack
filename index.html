@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header>
+
+
+            <h1>What do you want to learn?</h1>
+            <h3>This app will help you pull popular resources from multiple mediums to get you what you need to learn your way.</h3>
+            <h4>Let your curiosity go! Enter what you would like to learn more about below. </h4>
+
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label for="email" class='sr-only'>Text search</label>
+                    <input type="text" class="form-control" id="userInput">
+                </div>
+                <button type="submit" class="btn btn-default">Go!</button>
+            </form>
+
+
+        </header>
+        <div class="tabs">
+
+            <ul class="nav nav-tabs nav-justified col-md-6">
+                <li class="active"><a href="#youtube" data-toggle='tab'>YouTube</a></li>
+                <li><a href="#book" data-toggle='tab'>Books</a></li>
+                <li><a href="#podcast" data-toggle='tab'>Podcasts</a></li>
+                <li><a href="#meetups" data-toggle='tab'>MeetUp</a></li>
+                <li><a href="#lessons" data-toggle='tab'>Lessons</a></li>
+            </ul>
+
+        </div>
+        <div class="tab-content col-md-6 col-md-offset-3 ">
+            <div id="youtube" class="tab-pane fade in active">
+                <p>YouTube results</p>
+            </div>
+            <div id="book" class="tab-pane fade">
+                <p>Book results.</p>
+            </div>
+            <div id="podcast" class="tab-pane fade">
+                <p>Podcast results</p>
+            </div>
+            <div id="meetups" class="tab-pane fade">
+                <p>Meetups near you</p>
+            </div>
+            <div id="lessons" class="tab-pane fade">
+                <p>Lessons near you</p>
+            </div>
+
+        </div>
+    </div>
+    <!--closing options-->
+    </div>
+    <!--closing container-fluid-->
+
+</body>
+
+</html>
