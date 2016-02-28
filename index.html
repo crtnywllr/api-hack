@@ -6,19 +6,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
     <div class="container-fluid">
-        <header>
-
-
+        <header class="text-center">
+            <h2>Learning is a treasure that will follow its owner everywhere...</h2>
+            <p>Chinese proverb</p>
             <h1>What do you want to learn?</h1>
-            <h3>This app will help you pull popular resources from multiple mediums to get you what you need to learn your way.</h3>
-            <h4>Let your curiosity go! Enter what you would like to learn more about below. </h4>
+            <h3>This app will help you pull popular resources from multiple sources to get you what you need to learn your way.</h3>
+            <h4>Let your curiosity run wild! Enter what you would like to learn below. </h4>
 
             <form class="form-inline" role="form">
                 <div class="form-group">
@@ -30,40 +30,154 @@
 
 
         </header>
-        <div class="tabs">
 
-            <ul class="nav nav-tabs nav-justified col-md-6">
-                <li class="active"><a href="#youtube" data-toggle='tab'>YouTube</a></li>
-                <li><a href="#book" data-toggle='tab'>Books</a></li>
-                <li><a href="#podcast" data-toggle='tab'>Podcasts</a></li>
-                <li><a href="#meetups" data-toggle='tab'>MeetUp</a></li>
-                <li><a href="#lessons" data-toggle='tab'>Lessons</a></li>
-            </ul>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#youtube" data-toggle='tab'><i class="fa fa-youtube"></i>YouTube</a></li>
+            <li><a href="#book" data-toggle='tab'><i class="fa fa-book"></i>Books</a></li>
+            <li><a href="#meetups" data-toggle='tab'><i class="fa fa-comments"></i>MeetUp</a></li>
+            <li><a href="#lessons" data-toggle='tab'><i class="fa fa-google"></i>Lessons</a></li>
+        </ul>
 
-        </div>
-        <div class="tab-content col-md-6 col-md-offset-3 ">
+        <div class="tab-content">
             <div id="youtube" class="tab-pane fade in active">
-                <p>YouTube results</p>
+                <!--Insert carousel-->
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <h1>YouTube Results</h1>
+                        <div class="well">
+                            <div id="myCarousel" class="carousel slide">
+
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                    </div>
+                                    <!--/item-->
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                    </div>
+                                    <!--/item-->
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                    </div>
+                                    <!--/item-->
+                                </div>
+                                <!--/carousel-inner--><a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                            </div>
+                            <!--/myCarousel-->
+                        </div>
+                        <!--/well-->
+                        <!--/well-->
+                    </div>
+                    <!--/col-md-12-->
+                </div>
+                <!--/container-fluid-->
             </div>
-            <div id="book" class="tab-pane fade">
-                <p>Book results.</p>
+            <!--/tab-pane-->
+            <div id="book" class="tab-pane fade in">
+                <!--Insert carousel-->
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <h1>Book Results</h1>
+                        <div class="well">
+
+                            <!--/youtube-Carousel-->
+                        </div>
+                        <!--/well-->
+                    </div>
+                    <!--/col-md-12-->
+                </div>
+                <!--/container-fluid-->
             </div>
-            <div id="podcast" class="tab-pane fade">
-                <p>Podcast results</p>
+            <!--/tab-pane-->
+            <div id="meetups" class="tab-pane fade in">
+                <!--Insert carousel-->
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <h1>Meetup Results</h1>
+                        <div class="well">
+
+                            <!--/youtube-Carousel-->
+                        </div>
+                        <!--/well-->
+                    </div>
+                    <!--/col-md-12-->
+                </div>
+                <!--/container-fluid-->
             </div>
-            <div id="meetups" class="tab-pane fade">
-                <p>Meetups near you</p>
+            <!--/tab-pane-->
+            <div id="lessons" class="tab-pane fade in">
+                <!--Insert carousel-->
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <h1>Lessons Results</h1>
+                        <div class="well">
+
+                            <!--/youtube-Carousel-->
+                        </div>
+                        <!--/well-->
+                    </div>
+                    <!--/col-md-12-->
+                </div>
+                <!--/container-fluid-->
             </div>
-            <div id="lessons" class="tab-pane fade">
+            <!--/tab-pane-->
+
+
+            <!-- <div id="lessons " class="tab-pane fade ">
                 <p>Lessons near you</p>
-            </div>
+            </div>-->
 
         </div>
-    </div>
-    <!--closing options-->
     </div>
     <!--closing container-fluid-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
