@@ -33,31 +33,68 @@ Basic rules to write CSS
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules bellow (h2, h3, h4, h5, h6, p, a, ul, li))
 */
 
+body {
+    font-family: "EB Garamond", serif;
+    font-size: 16px;
+    color: #154890;
+}
+
+.btn-default {
+    background-image: none;
+    background-color: #FF6600;
+    color: white;
+}
+
 
 /* Header styles (Main Module)
 (all the styles inside the < header > or < nav > tags)
 */
+
+header h2 {
+    font-family: 'Dancing Script', cursive;
+}
+
+header h2 small {
+    font-family: "EB Garamond", serif;
+}
+
+header form {
+    margin-top: 3rem;
+}
 
 
 /* Content styles (Main Module)
 (all the styles inside the < sections > or < aside > tags)
 */
 
-
-/*.tabs {
-    margin: 2rem auto 0 auto;
-    width: 50%;
-    padding-left: 15px;
+.results {
+    margin-top: 2rem;
+    background-color: #fff;
 }
 
-.tab-pane {
-    border: 1px solid #ccc;
-    border-top: 0px;
-    height: 40rem;
-}*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    background-color: #F5EDE3 !important;
+    color: #6699FF;
+}
 
 .nav li i {
     margin-right: .5rem;
+}
+
+.tab-content {
+    background-color: #F5EDE3;
+    padding: 2rem;
+    border-radius: 4px;
+}
+
+.tab-content .youtube .thumbnail img {
+    width: 19rem;
+}
+
+.thumbnail .caption {
+    color: #154890;
 }
 
 

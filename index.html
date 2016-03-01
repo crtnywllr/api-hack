@@ -7,173 +7,147 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script:400,700|EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid col-xs-8 col-xs-offset-2 ">
         <header class="text-center">
-            <h2>Learning is a treasure that will follow its owner everywhere...</h2>
-            <p>Chinese proverb</p>
-            <h1>What do you want to learn?</h1>
-            <h3>This app will help you pull popular resources from multiple sources to get you what you need to learn your way.</h3>
-            <h4>Let your curiosity run wild! Enter what you would like to learn below. </h4>
-
-            <form class="form-inline" role="form">
-                <div class="form-group">
-                    <label for="email" class='sr-only'>Text search</label>
-                    <input type="text" class="form-control" id="userInput">
-                </div>
-                <button type="submit" class="btn btn-default">Go!</button>
-            </form>
-
-
+            <h2>Learning is a treasure that will follow its owner everywhere...<small>Chinese proverb</small></h2>
+            <div class="new-search">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label for="email" class='sr-only'>Text search</label>
+                        <input type="text" class="form-control" id="newUserInput" placeholder="New search">
+                    </div>
+                    <input type="submit" class="btn btn-default" id="new-search" value="Go!" />
+                </form>
+            </div>
         </header>
+        <section class="results col-xs-12 col-sm-10 col-sm-offset-1">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#youtube" data-toggle='tab'><i class="fa fa-youtube"></i>YouTube</a></li>
+                <li><a href="#book" data-toggle='tab'><i class="fa fa-book"></i>Books</a></li>
+                <li><a href="#meetups" data-toggle='tab'><i class="fa fa-comments"></i>MeetUp</a></li>
+                <li><a href="#lessons" data-toggle='tab'><i class="fa fa-google"></i>Lessons</a></li>
+            </ul>
 
-        <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a href="#youtube" data-toggle='tab'><i class="fa fa-youtube"></i>YouTube</a></li>
-            <li><a href="#book" data-toggle='tab'><i class="fa fa-book"></i>Books</a></li>
-            <li><a href="#meetups" data-toggle='tab'><i class="fa fa-comments"></i>MeetUp</a></li>
-            <li><a href="#lessons" data-toggle='tab'><i class="fa fa-google"></i>Lessons</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div id="youtube" class="tab-pane fade in active">
-                <!--Insert carousel-->
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <h1>YouTube Results</h1>
-                        <div class="well">
-                            <div id="myCarousel" class="carousel slide">
-
-                                <!-- Carousel items -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x"><img src="http://placehold.it/500x500" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                        </div>
-                                        <!--/row-->
-                                    </div>
-                                    <!--/item-->
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                        </div>
-                                        <!--/row-->
-                                    </div>
-                                    <!--/item-->
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
-                                            </div>
-                                        </div>
-                                        <!--/row-->
-                                    </div>
-                                    <!--/item-->
-                                </div>
-                                <!--/carousel-inner--><a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-
-                                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            <div class="tab-content">
+                <div id="youtube" class="youtube tab-pane fade in active">
+                    <div class="start">
+                        <h1 class='text-uppercase'>What do you want to learn?</h1>
+                        <h3>This app will help you pull popular resources from multiple sources to get you what you need to learn your way.</h3>
+                        <h4>Let your curiosity run wild! Enter what you would like to learn below. </h4>
+                        <h4>Click through the tabs to see your results! Once you're finished, you'll be able to start a new search.</h4>
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="email" class='sr-only'>Text search</label>
+                                <input type="text" class="form-control" id="userInput">
                             </div>
-                            <!--/myCarousel-->
-                        </div>
-                        <!--/well-->
-                        <!--/well-->
+                            <input type="submit" class="btn btn-default" id="search" value="Go!" />
+                        </form>
                     </div>
-                    <!--/col-md-12-->
-                </div>
-                <!--/container-fluid-->
-            </div>
-            <!--/tab-pane-->
-            <div id="book" class="tab-pane fade in">
-                <!--Insert carousel-->
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <h1>Book Results</h1>
-                        <div class="well">
-
-                            <!--/youtube-Carousel-->
+                    <div class="youtube-results container-fluid text-center">
+                        <div id="youtubeDisplay" class=" row">
+                            <!-- <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/500x500" alt="">
+                                <div class="caption">
+                                    <h3>Video Name</h3>
+                                    <p>Video description goes here. Video description goes here. Video description goes here. Video description goes here. </p>
+                                    <a href="" id="watch" class="btn btn-danger" role="button">Watch</a>
+                                </div>
+                            </div>
                         </div>
-                        <!--/well-->
-                    </div>
-                    <!--/col-md-12-->
-                </div>
-                <!--/container-fluid-->
-            </div>
-            <!--/tab-pane-->
-            <div id="meetups" class="tab-pane fade in">
-                <!--Insert carousel-->
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <h1>Meetup Results</h1>
-                        <div class="well">
-
-                            <!--/youtube-Carousel-->
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/500x500" alt="">
+                                <div class="caption">
+                                    <h3>Video Name</h3>
+                                    <p>Video description goes here. Video description goes here. Video description goes here. Video description goes here. </p>
+                                    <a href="" class="btn btn-danger" role="button">Watch</a>
+                                </div>
+                            </div>
                         </div>
-                        <!--/well-->
-                    </div>
-                    <!--/col-md-12-->
-                </div>
-                <!--/container-fluid-->
-            </div>
-            <!--/tab-pane-->
-            <div id="lessons" class="tab-pane fade in">
-                <!--Insert carousel-->
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <h1>Lessons Results</h1>
-                        <div class="well">
-
-                            <!--/youtube-Carousel-->
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/500x500" alt="">
+                                <div class="caption">
+                                    <h3>Video Name</h3>
+                                    <p>Video description goes here. Video description goes here. Video description goes here. Video description goes here. </p>
+                                    <a href="" class="btn btn-danger" role="button">Watch</a>
+                                </div>
+                            </div>
+</div>-->
                         </div>
-                        <!--/well-->
                     </div>
-                    <!--/col-md-12-->
                 </div>
-                <!--/container-fluid-->
+                <!--/tab-pane-->
+
+                <div id="book" class="tab-pane fade in">
+                    <div class="container-fluid text-center">
+                        <div id='bookDisplay' class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="http://placehold.it/500x500" alt="">
+                                    <div class="caption">
+                                        <h3>Book Name</h3>
+                                        <p>Author Name</p>
+                                        <a href="" id="watch" class="btn btn-default" role="button">More Info...</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--/tab-pane-->
+                <div id="meetups" class="tab-pane fade in">
+                    <!--Insert carousel-->
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <h1>Meetup Results</h1>
+                            <div class="well">
+
+                                <!--/youtube-Carousel-->
+                            </div>
+                            <!--/well-->
+                        </div>
+                        <!--/col-md-12-->
+                    </div>
+                    <!--/container-fluid-->
+                </div>
+                <!--/tab-pane-->
+                <div id="lessons" class="tab-pane fade in">
+                    <!--Insert carousel-->
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <h1>Lessons Results</h1>
+                            <div class="well">
+
+                                <!--/youtube-Carousel-->
+                            </div>
+                            <!--/well-->
+                        </div>
+                        <!--/col-md-12-->
+                    </div>
+                    <!--/container-fluid-->
+                </div>
+                <!--/tab-pane-->
+
+
+                <div id="lessons " class="tab-pane fade ">
+                    <p>Lessons near you</p>
+                </div>
+
             </div>
-            <!--/tab-pane-->
-
-
-            <!-- <div id="lessons " class="tab-pane fade ">
-                <p>Lessons near you</p>
-            </div>-->
-
-        </div>
+        </section>
     </div>
+
     <!--closing container-fluid-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
