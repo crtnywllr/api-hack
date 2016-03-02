@@ -72,6 +72,14 @@ header form {
     background-color: #fff;
 }
 
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:focus,
+.nav-tabs.nav-justified > .active > a:hover {
+    border-bottom: 1px solid #f5ede3;
+    position: relative;
+    top: 1px;
+}
+
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
@@ -95,6 +103,35 @@ header form {
 
 .thumbnail .caption {
     color: #154890;
+}
+
+.result-box {
+    min-height: 20rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.result-box img {
+    max-height: 16rem;
+    max-width: 90%;
+    display: block;
+}
+
+.result-box h3 {
+    display: block;
+    min-height: 8rem;
+}
+
+.result-box .thumbnail {
+    min-height: 19rem;
+    vertical-align: middle;
+    margin-top: 1rem;
+}
+
+.result-box .moreInfoButton {
+    margin-bottom: 1rem;
 }
 
 
