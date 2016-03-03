@@ -8,6 +8,8 @@ $(function () {
         var params = {
             q: searchTerm,
             part: 'snippet',
+            order: 'relevance',
+            maxResults: 9,
             key: 'AIzaSyCHXrCpLMW0YYC6gQeu1jPxZZDwJwPEW3c'
         };
         url = 'https://www.googleapis.com/youtube/v3/search';
@@ -24,14 +26,12 @@ $(function () {
         $.each(videos, function (index, value) {
             //console.log(value.snippet.title);
             //console.log(value.snippet.description);
+            // console.log(value.id.videoId);
 
-            htmlOutput += '<div class="col-sm-6 col-md-4">';
-            htmlOutput += '<div class="thumbnail"><img src = "' + value.snippet.thumbnails.high.url + '"/>';
+            htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
+            htmlOutput += '<div class="thumbnail"><img src = "' + value.snippet.thumbnails.high.url + '"/></div>';
             htmlOutput += '<div class="caption"><h3>' + value.snippet.title + '</h3>';
-
-            htmlOutput += '<a href="" id="watch" class="btn btn-default" role="button">Watch</a></div></div></div>';
-
-
+            htmlOutput += '<a href="http://www.youtube.com/watch?v=' + value.id.videoId + '" target = "blank" class="watchButton btn btn-default" role="button">Watch</a></div></div>';
         });
         $('.start').hide();
         $('.youtube-results').show();
@@ -50,7 +50,6 @@ $(function () {
 
         $.getJSON(url, params, function (data) {
             // console.log(data);
-
             showResultsBooks(data);
         });
     }
@@ -59,22 +58,22 @@ $(function () {
         // console.log(item);
         var htmlOutput = "";
         $.each(books.items, function (index, value) {
-            console.log(value.volumeInfo);
+            //  console.log(value.volumeInfo);
             htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
             if (value.volumeInfo.imageLinks) {
                 if (value.volumeInfo.imageLinks.thumbnail.length > 0) {
                     htmlOutput += '<div class="thumbnail"><img src = "' + value.volumeInfo.imageLinks.thumbnail + '"/>';
                 } else {
-                    htmlOutput += '<div class="thumbnail"><img src = "images/default.png"/>';
+                    htmlOutput += '<div class="thumbnail"><img src = "images/book-default.jpg"/>';
                 }
             } else {
-                htmlOutput += '<div class="thumbnail"><img src = "images/default.png"/>';
+                htmlOutput += '<div class="thumbnail"><img src = "images/book-default.jpg"/>';
             }
             htmlOutput += '</div><div class="caption"><h3>' + value.volumeInfo.title + '</h3>';
             htmlOutput += '<p>' + value.volumeInfo.authors + '</p>';
-            htmlOutput += '<a href=""  class="btn btn-default moreInfoButton" role="button">More Info...</a></div></div>';
+            htmlOutput += '<a href="' + value.volumeInfo.previewLink + '" target= "blank" class="btn btn-default moreInfoButton" role="button">More Info...</a></div></div>';
 
-        })
+        });
         $('#bookDisplay').html(htmlOutput);
 
     }
@@ -82,28 +81,7 @@ $(function () {
 
 
 
-    /*  function showResultsBooks(books) {
-          var htmlOutput = "";
-          $.each(books, function (index, value) {
 
-              htmlOutput += '<div class="col-sm-6 col-md-4">';
-              htmlOutput += '<div class="thumbnail"><img src = "' + item.volumeInfo.imageLinks.thumbnail + '"/>';
-              htmlOutput += '<div class="caption"><h3>' + item.volumeInfo.title + '</h3>';
-              htmlOutput += '<p>Author' + item.volumeInfo.authors + '</p>';
-              htmlOutput += '<a href="" id="watch" class="btn btn-default" role="button">More Info...</a></div></div></div>';
-
-
-          });
-          $('.start').hide();
-          $('.youtube-results').show();
-          $('.new-search').show();
-          $('#youtubeDisplay').html(htmlOutput);
-      }
-      //Step 3 Use Functions
-      //show instructions
-      $('.start').show();
-      $('.youtube-results').hide();
-      $('.new-search').hide();*/
 
     //start search
     $('#search').click(function (event) {
@@ -121,11 +99,12 @@ $(function () {
     $('#new-search').click(function (event) {
         event.preventDefault();
         var searchTerm = ($('#newUserInput').val() + " lesson");
-        $("#youtubeDisplay").empty();
+
 
         //alert("I have clicked on new-search");
 
         getRequestYoutube(searchTerm);
+        getRequestBooks(searchTerm);
     });
 
 });
