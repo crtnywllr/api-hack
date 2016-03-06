@@ -45,6 +45,12 @@ body {
     color: white;
 }
 
+a:focus,
+a:active,
+a:hover {
+    border: 1px solid #f5ede3;
+}
+
 
 /* Header styles (Main Module)
 (all the styles inside the < header > or < nav > tags)
@@ -97,9 +103,10 @@ header form {
     border-radius: 4px;
 }
 
-.tab-content .youtube .thumbnail img {
+
+/*.tab-content .youtube .thumbnail img {
     width: 19rem;
-}
+}*/
 
 .thumbnail .caption {
     color: #154890;
@@ -114,24 +121,42 @@ header form {
 }
 
 .result-box img {
-    max-height: 16rem;
+    height: 16rem;
     max-width: 90%;
     display: block;
 }
 
 .result-box h3 {
     display: block;
-    min-height: 8rem;
+    height: 14rem;
+    overflow: hidden;
 }
 
-.result-box .thumbnail {
+.result-box p {
+    min-height: 6rem;
+}
+
+.result-box .imageDisplay {
     min-height: 19rem;
     vertical-align: middle;
     margin-top: 1rem;
 }
 
+.result-box .watchButton,
 .result-box .moreInfoButton {
     margin-bottom: 1rem;
+}
+
+#map {
+    height: 40rem;
+}
+
+#userInputHolder {
+    position: relative!important;
+}
+
+#userInputHolder input {
+    width: 400px!important;
 }
 
 
