@@ -128,7 +128,8 @@ header form {
 
 .result-box h3 {
     display: block;
-    min-height: 14rem;
+    height: 14rem;
+    overflow: hidden;
 }
 
 .result-box p {
@@ -144,6 +145,18 @@ header form {
 .result-box .watchButton,
 .result-box .moreInfoButton {
     margin-bottom: 1rem;
+}
+
+#map {
+    height: 40rem;
+}
+
+#userInputHolder {
+    position: relative!important;
+}
+
+#userInputHolder input {
+    width: 400px!important;
 }
 
 
