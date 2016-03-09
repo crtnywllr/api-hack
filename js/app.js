@@ -1,5 +1,6 @@
 //Step 1 Define Global Variables
-
+var lat = -80.6929583;
+var lng = 35.2163595;
 
 //Step 2 Define Functions
 function getRequestYoutube(searchTerm) {
@@ -78,64 +79,82 @@ function showResultsBooks(books) {
 }
 
 //-------------------------------------------------------------------------
-/*//Meetup Functionality
+//Meetup Functionality
 
-function getRequestMeetup(searchTerm) {
+function getRequestMeetup(searchTerm, latitude, longitude) {
 
-    //Get event data
-    /* var params = {
-         //lat: position.coords.latitude,
-         //lng: position.coords.longitude,
-         zip: 97210,
-         sign: 'true',
-         topic: searchTerm,
-
-         page: 9,
-         key: '6943e383c297e4f225377c3368d48'
-     };
-
-     url = 'http://api.meetup.com/events?';
-     $.getJSON(url, params, function (data) {
-         var meetup_events = []
-         $.each(data.results, function (index, val) {
-             var parsed = {
-                 'event_url': val.event_url,
-                 'event_desc': val.description,
-                 'venue': val.venue_address1,
-                 'time': val.time,
-                 'name': val.name,
-                 'price': val.fee
-             }
-             meetup_events.push(parsed);
-         })
-         console.log(meetup_events);
-     })*/
-/* var params = {
+    var params = {
         sign: 'true',
-        groupUrlName: 'bitmakerlabs',
-        page: 20,
-        key: '6943e383c297e4f225377c3368d48',
-        callback: '?'
-    }
-    url = 'https://api.meetup.com/events?'
-    $.getJSON(url, params, function (data) {
-        var meetup_events = []
-        $.each(data.results, function (index, val) {
-            var parsed = {
-                'event_url': val.event_url,
-                'event_desc': val.description,
-                'venue': val.venue_address1,
-                'time': val.time,
-                'name': val.name,
-                'price': val.fee
-            }
-            meetup_events.push(parsed);
+        lat: '45.5263603',
+        topic: searchTerm,
+        lon: '-122.69613050000001',
+        key: '6943e383c297e4f225377c3368d48'
+    };
+
+
+    var result = $.ajax({
+            /* update API end point */
+            url: "http://api.meetup.com/2/groups",
+            data: params,
+            dataType: "jsonp",
+            /*set the call type GET / POST*/
+            type: "GET"
         })
-        console.log(meetup_events);
-    })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            /* if the results are meeningful, we can just console.log them */
+            console.log(result);
+            /* if the results are not meeningful, it might help to convert them to string first
+                    var displayStringifiedResults = JSON.stringify(result);
+                    console.log(displayStringifiedResults);*/
+            /* if the results contain invalid json, it might help to sanitize them first
+                    var displaySanitizedResults = sanitizeJSON(result);
+                    console.log(displaySanitizedResults);*/
+        })
+        /* if the call is NOT successful show errors */
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 
 
-}*/
+    /*var url = 'http://api.meetup.com/2/groups?callback=?&sign=true&lat=45.5263603&topic=' + searchTerm + '&lon=-122.69613050000001&key=6943e383c297e4f225377c3368d48';
+    console.log(url);
+    $.getJSON('http://api.meetup.com/2/groups?callback=?&sign=true&lat=45.5263603&topic=outdoors&lon=-122.69613050000001&key=6943e383c297e4f225377c3368d48', function (data) {
+               http://api.meetup.com/2/groups?callback=?&sign=true&lat=45.5263603&topic=outdoors&lon=-122.69613050000001&key=6943e383c297e4f225377c3368d48
+        console.log(data);
+    })*/
+
+}
+//Get event data
+/* var params = {
+     //lat: position.coords.latitude,
+     //lng: position.coords.longitude,
+     zip: 97210,
+     sign: 'true',
+     topic: searchTerm,
+
+     page: 9,
+     key: '6943e383c297e4f225377c3368d48'
+ };
+
+ url = 'http://api.meetup.com/events?';
+ $.getJSON(url, params, function (data) {
+     var meetup_events = []
+     $.each(data.results, function (index, val) {
+         var parsed = {
+             'event_url': val.event_url,
+             'event_desc': val.description,
+             'venue': val.venue_address1,
+             'time': val.time,
+             'name': val.name,
+             'price': val.fee
+         }
+         meetup_events.push(parsed);
+     })
+     console.log(meetup_events);
+ })*/
 
 //-------------------------------------------------------------------------
 
@@ -154,8 +173,8 @@ $(document).ready(function () {
 
         getRequestYoutube(searchTerm);
         getRequestBooks(searchTerm);
-        // getRequestMeetup(searchTerm)
-        //searchLocations(searchTerm);
+        getRequestMeetup(searchTerm)
+            //searchLocations(searchTerm);
     });
 
 
