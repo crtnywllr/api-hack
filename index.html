@@ -12,12 +12,10 @@
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-        $(window).load(function () {
-            $(".loader").fadeOut("slow");
-        })
-    </script>
     <script>
+        /* $(window).load(function () {
+                                                            $(".loader").fadeOut("slow");
+                                                        })*/
         //Step 1 Define Global Variables
         var lat = -80.6929583;
         var lng = 35.2163595;
@@ -172,6 +170,7 @@
 
         function searchLocations(serviceType) {
             var service = new google.maps.places.PlacesService(map);
+            google.maps.event.trigger(map, 'resize');
             service.nearbySearch({
                 location: pos,
                 radius: 100,
@@ -341,9 +340,11 @@
 
         $(document).ready(function () {
             $('#search').click(function (event) {
+                // $('.form-inline').submit();
                 event.preventDefault();
+
                 var searchTerm = $('#userInput').val();
-                $('.start').hide();
+                //$('.start').hide();
 
                 getRequestYoutube(searchTerm);
                 getRequestBooks(searchTerm);
@@ -355,7 +356,7 @@
 </head>
 
 <body>
-    <div class="loader"></div>
+    <!-- <div class="loader"></div>-->
     <div class="container-fluid col-xs-8 col-xs-offset-2 ">
         <header class="text-center">
             <h2>Learning is a treasure that will follow its owner everywhere...<small>Chinese proverb</small></h2>
