@@ -1,11 +1,3 @@
-/*
-The CSS code gets to executed from top to bottom and left ro right
-Basic rules to write CSS
-- write GENERAL rules first (for all the paragraph tags in the website for example) and only after that write CSS for SPECIFIC tags (for example the paragraph tags inside the footer)
-- write the css styles to define for the parent (outside) container and THEN the children (inside containers) of that parent and THEN the children (inside containers) of the child above
-*/
-
-
 /* CSS reset
 (all the browsers will see the website in the same by setting every tag to 0 (the website will look the same on all browsers))
 */
