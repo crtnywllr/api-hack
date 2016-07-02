@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css'>
+    <link rel='stylesheet' href='css/font-awesome.min.css'>
     <link href='https://fonts.googleapis.com/css?family=Dancing+Script:400,700|EB+Garamond' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='css/style.css'>
+    <script src='https://code.jquery.com/jquery-2.2.1.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
 
     <script>
-        /* $(window).load(function () {
-                                                            $(".loader").fadeOut("slow");
-                                                        })*/
-        //Step 1 Define Global Variables
+        //----------GoogleMaps Functionality-----------
         var lat = -80.6929583;
         var lng = 35.2163595;
         var map;
@@ -49,27 +46,19 @@
                     handleLocationError(true, infowindow, map.getCenter());
                 });
             } else {
-                // Browser doesn't support Geolocation
+                // Error if browser doesn't support Geolocation
                 handleLocationError(false, infowindow, map.getCenter());
             }
-            // Create the search box and link it to the UI element.
+            // Create the search box and link it to UI
             var input = document.getElementById('userInput');
             var searchBox = new google.maps.places.SearchBox(input);
-            // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            //hack control position
-            /* google.maps.event.addDomListener(map, 'tilesloaded', function () {
-                 if ($('#userInputHolder').length == 0) {
-                     $('#userInput').wrap('<div id="userInputHolder" />');
-                 }
-             });*/
             google.maps.event.trigger(map, 'resize');
             // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
             });
             var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
+            // Retrieve place details
             searchBox.addListener('places_changed', function () {
                 var places = searchBox.getPlaces();
                 console.log('places should be here' + places);
@@ -84,7 +73,7 @@
                 infowindow = new google.maps.InfoWindow();
                 // Try HTML5 geolocation.
                 if (places.length == 0) {
-                    alert("No places found");
+                    alert('No places found');
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function (position) {
                             var pos = {
@@ -147,7 +136,6 @@
         }
 
         function callback(results, status) {
-
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 for (var i = 0; i < results.length; i++) {
                     createMarker(results[i]);
@@ -156,7 +144,6 @@
         }
 
         function createMarker(place) {
-
             var placeLoc = place.geometry.location;
             var marker = new google.maps.Marker({
                 map: map,
@@ -178,10 +165,9 @@
             }, callback);
         }
 
-
-        //YouTube Functionality
+        //----------YouTube Functionality--------------
         function getRequestYoutube(searchTerm) {
-            var searchTerm = (searchTerm + " lesson");
+            var searchTerm = (searchTerm + ' lesson');
             var params = {
                 q: searchTerm,
                 part: 'snippet',
@@ -190,62 +176,53 @@
                 key: 'AIzaSyCHXrCpLMW0YYC6gQeu1jPxZZDwJwPEW3c'
             };
             url = 'https://www.googleapis.com/youtube/v3/search';
-
+            //ajax call for data
             $.getJSON(url, params, function (data) {
-                // console.log(data.items);
                 showResultsYoutube(data.items);
             });
-
         };
 
         function showResultsYoutube(videos) {
-            var htmlOutput = "";
-
+            var htmlOutput = '';
+            //setting html to be displayed
             if (videos.length == 0) {
-                var htmlOutput = "Sorry, no videos!";
+                var htmlOutput = 'Sorry, no videos!';
             } else {
                 $.each(videos, function (index, value) {
-                    //console.log(value.snippet.title);
-                    //console.log(value.snippet.description);
-                    // console.log(value.id.videoId);
-
                     htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
                     htmlOutput += '<div class="thumbnail"><img src = "' + value.snippet.thumbnails.high.url + '"/></div>';
                     htmlOutput += '<div class="caption"><h3>' + value.snippet.title + '</h3>';
                     htmlOutput += '<a href="http://www.youtube.com/watch?v=' + value.id.videoId + '" target = "blank" class="watchButton btn btn-default" role="button">Watch</a></div></div>';
                 });
             }
-
-
+            //display returned html in UI
             $('#youtubeDisplay').html(htmlOutput);
         }
-        //--------------------------------------------------------
-        //GoogleBooks functionality
+
+        //---------------GoogleBooks functionality----------
         function getRequestBooks(searchTerm) {
-            var searchTerm = ("learn" + searchTerm);
+            var searchTerm = ('learn' + searchTerm);
             var params = {
                 q: searchTerm,
                 maxResults: 9,
                 key: 'AIzaSyCHXrCpLMW0YYC6gQeu1jPxZZDwJwPEW3c'
             };
             url = 'https://www.googleapis.com/books/v1/volumes';
-
+            //ajax request to get data
             $.getJSON(url, params, function (data) {
-                // console.log(data);
                 showResultsBooks(data);
             });
         }
 
         function showResultsBooks(books) {
-            // console.log(item);
-            var htmlOutput = "";
+            var htmlOutput = '';
+            //setting html for display
             if (books.items == undefined) {
-                var htmlOutput = "Sorry, no books!";
+                var htmlOutput = 'Sorry, no books!';
             } else {
-
                 $.each(books.items, function (index, value) {
-                    //  console.log(value.volumeInfo);
                     htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
+                    //if data has no image, display default image
                     if (value.volumeInfo.imageLinks) {
                         if (value.volumeInfo.imageLinks.thumbnail.length > 0) {
                             htmlOutput += '<div class="thumbnail"><img src = "' + value.volumeInfo.imageLinks.thumbnail + '"/>';
@@ -261,15 +238,13 @@
 
                 });
             }
+            //display html in UI
             $('#bookDisplay').html(htmlOutput);
-
         }
 
-        //-------------------------------------------------------------------------
-        //Meetup Functionality
+        //---------------Meetup Functionality------------
 
         function getRequestMeetup(searchTerm, latitude, longitude) {
-
             var params = {
                 sign: 'true',
                 page: 9,
@@ -278,46 +253,34 @@
                 lon: longitude,
                 key: '6943e383c297e4f225377c3368d48'
             };
-
-
+            //ajax call for data
             var result = $.ajax({
-                    /* update API end point */
                     url: "http://api.meetup.com/2/groups",
                     data: params,
                     dataType: "jsonp",
-                    /*set the call type GET / POST*/
                     type: "GET"
                 })
-                /* if the call is successful (status 200 OK) show results */
+                //on success, display data
                 .done(function (result) {
-
                     showResultsMeetup(result);
-                    /* if the results are meeningful, we can just console.log them */
-
-
                 })
-                /* if the call is NOT successful show errors */
+                //on fail, show error
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
                     console.log(error);
                     console.log(errorThrown);
                 });
-
         }
 
         function showResultsMeetup(events) {
-
-            var htmlOutput = "";
+            var htmlOutput = '';
+            //set html for display
             if (events.results == undefined) {
-                var htmlOutput = "Sorry, no meetups!";
+                var htmlOutput = 'Sorry, no meetups!';
             } else {
                 $.each(events.results, function (index, value) {
-                    //  console.log(value.group_photo.thumb_link);
-                    // console.log(value.link);
-                    //console.log(value.name);
-
-
                     htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
+                    //if data has no image display default image
                     if (value.group_photo) {
                         if (value.group_photo.highres_link.length > 0) {
                             htmlOutput += '<div class="thumbnail"><img src = "' + value.group_photo.highres_link + '"/>';
@@ -327,25 +290,19 @@
                     } else {
                         htmlOutput += '<div class="thumbnail"><img src = "images/meetup-default.png"/>';
                     }
-
                     htmlOutput += '</div><div class="caption"><h3>' + value.name + '</h3>';
                     htmlOutput += '<a href="' + value.link + '" target = "blank" class="infoButton btn btn-default" role="button">More Info</a></div></div>';
                 });
             }
-
-
+            //display html in UI
             $('#meetupDisplay').html(htmlOutput);
         }
         //-------------------------------------------------------------------------
-
+        //initialize new search on click
         $(document).ready(function () {
             $('#search').click(function (event) {
-                // $('.form-inline').submit();
                 event.preventDefault();
-
                 var searchTerm = $('#userInput').val();
-                //$('.start').hide();
-
                 getRequestYoutube(searchTerm);
                 getRequestBooks(searchTerm);
                 getRequestMeetup(searchTerm, lat, lng);
@@ -356,71 +313,70 @@
 </head>
 
 <body>
-    <!-- <div class="loader"></div>-->
-    <div class="container-fluid col-xs-8 col-xs-offset-2 ">
-        <header class="text-center">
+    <div class='container-fluid col-xs-8 col-xs-offset-2 '>
+        <header class='text-center'>
             <h2>Learning is a treasure that will follow its owner everywhere...<small>Chinese proverb</small></h2>
-            <div class="new-search">
-                <form class="form-inline" role="form">
-                    <div class="form-group">
-                        <label for="email" class='sr-only'>Text search</label>
-                        <input type="text" class="form-control" id="userInput" placeholder="New search" autocomplete="off" required/>
+            <div class='new-search'>
+                <form class='form-inline' role='form'>
+                    <div class='form-group'>
+                        <label for='email' class='sr-only'>Text search</label>
+                        <input type='text' class='form-control' id='userInput' placeholder='New search' autocomplete='off' required/>
                     </div>
-                    <input type="submit" class="btn btn-default" id="search" value="Go!" />
+                    <input type='submit' class='btn btn-default' id='search' value='Go!' />
                 </form>
-                <div class="start">
+                <div class='start'>
                     <h1 class='text-uppercase'>What do you want to learn?</h1>
                     <h3>This app will help you pull popular resources from multiple sources to get you what you need to learn your way.</h3>
                     <h4>Let your curiosity run wild! Enter what you would like to learn above. </h4>
-                    <h4>Click through the tabs to see your results! Once you're finished, you'll be able to start a new search.</h4>
+                    <h4>Click through the tabs to see your results. Once you're finished, you'll be able to start a new search.</h4>
 
                 </div>
             </div>
         </header>
-        <section class="results col-xs-12 col-sm-10 col-sm-offset-1">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#lessons" data-toggle='tab'><i class="fa fa-google"></i>Lessons</a></li>
-                <li><a href="#youtube" data-toggle='tab'><i class="fa fa-youtube"></i>YouTube</a></li>
-                <li><a href="#book" data-toggle='tab'><i class="fa fa-book"></i>Books</a></li>
-                <li><a href="#meetups" data-toggle='tab'><i class="fa fa-comments"></i>MeetUp</a></li>
+        <section class='results col-xs-12 col-sm-10 col-sm-offset-1'>
+            <ul class='nav nav-tabs nav-justified'>
+                <li class='active'><a href='#lessons' data-toggle='tab'><i class='fa fa-google'></i>Lessons</a></li>
+                <li><a href='#youtube' data-toggle='tab'><i class='fa fa-youtube'></i>YouTube</a></li>
+                <li><a href='#book' data-toggle='tab'><i class='fa fa-book'></i>Books</a></li>
+                <li><a href='#meetups' data-toggle='tab'><i class='fa fa-comments'></i>MeetUp</a></li>
             </ul>
 
-            <div class="tab-content">
-                <div id="youtube" class="youtube tab-pane fade in ">
+            <div class='tab-content'>
+                <div id='youtube' class='youtube tab-pane fade in '>
 
-                    <div class="youtube-results container-fluid text-center">
-                        <div id="youtubeDisplay" class=" row">
-
-                        </div>
-                    </div>
-                </div>
-                <!--/tab-pane-->
-
-                <div id="book" class="tab-pane fade in">
-                    <div class="container-fluid text-center">
-                        <div id='bookDisplay' class="row">
-
-
-                        </div>
-
-                    </div>
-                </div>
-                <!--/tab-pane-->
-                <div id="meetups" class="tab-pane fade in">
-                    <div class="container-fluid text-center">
-                        <div id='meetupDisplay' class="row">
-
+                    <div class='youtube-results container-fluid text-center'>
+                        <div id='youtubeDisplay' class=' row'>
 
                         </div>
                     </div>
                 </div>
                 <!--/tab-pane-->
-                <div id="lessons" class="tab-pane fade in active">
 
-                    <div class="container-fluid">
-                        <div class="col-md-12">
+                <div id='book' class='tab-pane fade in'>
+                    <div class='container-fluid text-center'>
+                        <div id='bookDisplay' class='row'>
 
-                            <div id="map"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--/tab-pane-->
+                <div id='meetups' class='tab-pane fade in'>
+                    <div class='container-fluid text-center'>
+                        <div id='meetupDisplay' class='row'>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--/tab-pane-->
+                <div id='lessons' class='tab-pane fade in active'>
+
+                    <div class='container-fluid'>
+                        <div class='col-md-12'>
+
+                            <div id='map'></div>
 
                         </div>
                         <!--/col-md-12-->
@@ -433,7 +389,7 @@
     </div>
 
     <!--closing container-fluid-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7buZcMEjcjwpMa8qztndpYmCxxP-Te2A&signed_in=true&libraries=places&callback=initAutocomplete"></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7buZcMEjcjwpMa8qztndpYmCxxP-Te2A&signed_in=true&libraries=places&callback=initAutocomplete'></script>
 
 
 </body>
