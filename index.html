@@ -135,7 +135,7 @@
                 'Error: Your browser doesn\'t support geolocation.');
         }
 
-        function callback(results, status) {
+        function validatePlace(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 for (var i = 0; i < results.length; i++) {
                     createMarker(results[i]);
@@ -162,7 +162,7 @@
                 location: pos,
                 radius: 100,
                 types: [serviceType]
-            }, callback);
+            }, validatePlace);
         }
 
         //----------YouTube Functionality--------------
@@ -186,13 +186,13 @@
             var htmlOutput = '';
             //setting html to be displayed
             if (videos.length == 0) {
-                var htmlOutput = 'Sorry, no videos!';
+                htmlOutput = 'Sorry, no videos!';
             } else {
                 $.each(videos, function (index, value) {
                     htmlOutput += '<div class="result-box col-sm-6 col-md-4">';
                     htmlOutput += '<div class="thumbnail"><img src = "' + value.snippet.thumbnails.high.url + '"/></div>';
                     htmlOutput += '<div class="caption"><h3>' + value.snippet.title + '</h3>';
-                    htmlOutput += '<a href="http://www.youtube.com/watch?v=' + value.id.videoId + '" target = "blank" class="watchButton btn btn-default" role="button">Watch</a></div></div>';
+                    htmlOutput += '<a href="http://www.youtube.com/watch?v=' + value.id.videoId + '" target = "blank" class="btn btn-default btnBottom" role="button">Watch</a></div></div>';
                 });
             }
             //display returned html in UI
@@ -234,7 +234,7 @@
                     }
                     htmlOutput += '</div><div class="caption"><h3>' + value.volumeInfo.title + '</h3>';
                     htmlOutput += '<p>' + value.volumeInfo.authors + '</p>';
-                    htmlOutput += '<a href="' + value.volumeInfo.previewLink + '" target= "blank" class="btn btn-default moreInfoButton" role="button">More Info...</a></div></div>';
+                    htmlOutput += '<a href="' + value.volumeInfo.previewLink + '" target= "blank" class="btn btn-default btnBottom" role="button">More Info...</a></div></div>';
 
                 });
             }
@@ -291,7 +291,7 @@
                         htmlOutput += '<div class="thumbnail"><img src = "images/meetup-default.png"/>';
                     }
                     htmlOutput += '</div><div class="caption"><h3>' + value.name + '</h3>';
-                    htmlOutput += '<a href="' + value.link + '" target = "blank" class="infoButton btn btn-default" role="button">More Info</a></div></div>';
+                    htmlOutput += '<a href="' + value.link + '" target = "blank" class="btn btn-default btnBottom" role="button">More Info</a></div></div>';
                 });
             }
             //display html in UI
@@ -329,7 +329,6 @@
                     <h3>This app will help you pull popular resources from multiple sources to get you what you need to learn your way.</h3>
                     <h4>Let your curiosity run wild! Enter what you would like to learn above. </h4>
                     <h4>Click through the tabs to see your results. Once you're finished, you'll be able to start a new search.</h4>
-
                 </div>
             </div>
         </header>
@@ -343,10 +342,8 @@
 
             <div class='tab-content'>
                 <div id='youtube' class='youtube tab-pane fade in '>
-
                     <div class='youtube-results container-fluid text-center'>
                         <div id='youtubeDisplay' class=' row'>
-
                         </div>
                     </div>
                 </div>
@@ -355,42 +352,35 @@
                 <div id='book' class='tab-pane fade in'>
                     <div class='container-fluid text-center'>
                         <div id='bookDisplay' class='row'>
-
-
                         </div>
-
                     </div>
                 </div>
                 <!--/tab-pane-->
                 <div id='meetups' class='tab-pane fade in'>
                     <div class='container-fluid text-center'>
                         <div id='meetupDisplay' class='row'>
-
-
                         </div>
                     </div>
                 </div>
                 <!--/tab-pane-->
                 <div id='lessons' class='tab-pane fade in active'>
-
                     <div class='container-fluid'>
                         <div class='col-md-12'>
-
                             <div id='map'></div>
-
                         </div>
-                        <!--/col-md-12-->
                     </div>
-                    <!--/container-fluid-->
                 </div>
                 <!--/tab-pane-->
             </div>
+            <!--/tab-content-->
         </section>
+        <!--/results-->
     </div>
+    <!--/container-fluid-->
 
     <!--closing container-fluid-->
     <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7buZcMEjcjwpMa8qztndpYmCxxP-Te2A&signed_in=true&libraries=places&callback=initAutocomplete'></script>
-
+    <!--<script src="js/app.js"></script>-->
 
 </body>
 
