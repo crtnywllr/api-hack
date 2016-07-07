@@ -1,6 +1,6 @@
 //----------GoogleMaps Functionality-----------
-var lat = -80.6929583;
-var lng = 35.2163595;
+var lat;
+var lng;
 var map;
 var infowindow;
 
